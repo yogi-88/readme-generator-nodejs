@@ -17,26 +17,53 @@ const questions = [
         name: 'description',
         message: 'Please put your project description'
     },
-    //Installation guide
-    //Usage
+    {
+        type: 'input',
+        name: 'installation',
+        message: 'Please mention the installation instructions for your project?'
+    },
+    {
+        type: 'input',
+        name: 'usage',
+        message: 'Provide the usage instructions for your project'
+    },
+
     //License (multiple choice)
     {
         type: 'list',
-        choices: ['MIT','GPL','GNU'],
+        choices: ['MIT','GPL','GNU','None'],
         name: 'license',
-        message: 'What is your license type?'
-    }
+        message: 'Which licens ewould you like to use for your project?'
+    },
     //Contributing
+    {
+        type: 'input',
+        name: 'Contributions',
+        message: 'Provide the contribution guidelines for your project'
+    },
     //Tests
-    //Questions
-    //Github username
-    //email address
+    {
+        type: 'input',
+        name: 'tests',
+        message: 'What are the test instructions for your project?'
+    },
+    {
+        type: 'input',
+        name: 'username',
+        message: 'What is your GitHub username?',
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'What is your email address?',
+    },
+
 
 ];
 
 // function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile('README.md', data, (err)=> {
+    fs.writeFile(fileName.md, data, (err)=> {
         if(err) {
             console.error(err);
         } else {
@@ -52,8 +79,7 @@ function init() {
     .prompt(questions)
     .then(answers => {
         console.log(answers);
-        const markdown = generateMarkdown(answers);
-        console.log(markdown);
+        writeToFile('README.md', generateMarkdown({...answers}))
     });
     
 
