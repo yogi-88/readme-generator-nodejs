@@ -20,10 +20,10 @@ function generateMarkdown(data) {
   ${data.usage}
 
   ## Contributing
-  ${contributing}
+  ${data.contributing}
 
   ## Tests
-  ${tests}
+  ${data.tests}
 
   GitHub: https://github.com/${data.github}
   Email: ${data.email}
